@@ -1,0 +1,38 @@
+<div id="containerMain">
+  <h2 class="h2Canciones">Canciones</h2>
+  <div class="containerCanciones">
+    <app-cancion *ngFor="let c of canciones" [titulo]="c.titulo" [autor]="c.autor" (onPlay)="reproducirCancion(c)">
+    </app-cancion>
+  </div>
+
+  <!-- Mostrar playlists -->
+  <h2 class="h2Playlists">Playlists</h2>
+  <div class="containerPlaylists">
+    <div *ngFor="let playlist of playlists" class="playlist-card">
+      <h3>{{ playlist.nombre }}</h3>
+      <p>Visibilidad: {{ playlist.visibilidad }}</p>
+      <p>Propietario: {{ playlist.propietario || 'Anónimo' }}</p>
+      <p>Likes: {{ playlist.likes }}</p>
+      <p>Canciones: {{ playlist.canciones }}</p>
+    </div>
+  </div>
+
+  <!-- Reproductor de audio que solo aparece cuando se selecciona una canción -->
+  <div *ngIf="mostrarReproductor" class="reproductor-audio">
+    <div class="tituloCancion" *ngIf="currentSong">
+      <span>{{ currentSong.titulo }}</span>
+    </div>
+    <audio id="audioPlayer" controls autoplay (ended)="onSongEnded()"> <!--ended para detectar que acabo la cancion-->
+      <source [src]="audioSrc" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    <!-- Botón de Anterior -->
+    <button class="prev-btn" (click)="prevSong()">Anterior</button>
+
+    <!-- Botón de Siguiente -->
+    <button class="next-btn" (click)="nextSong()">Siguiente</button>
+
+    <!-- Reproducción Aleatoria -->
+    <button (click)="playRandomSong()">Reproducir aleatoriamente</button>
+  </div>
+</div>
