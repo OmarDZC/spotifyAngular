@@ -164,3 +164,18 @@ audio {
     width: 100%;
     outline: none;
 }
+
+/*boton estadisticas*/
+.estadisticas-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.estadisticas-button:hover {
+    background: #2980b9;
+}

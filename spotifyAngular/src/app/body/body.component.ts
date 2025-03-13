@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-body',
   standalone: false,
   templateUrl: './body.component.html',
-  styleUrl: './body.component.css'
+  styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
   canciones: any[] = [];
   playlists: any[] = [];
+  estadisticas: any[] = [];
   cancionSeleccionada: any = null;
   audioSrc: string = "";
   mostrarReproductor: boolean = false;
@@ -30,6 +31,14 @@ export class BodyComponent implements OnInit {
       .then(response => response.json())
       .then(data => {
         this.playlists = data;
+      })
+      .catch(error => console.error('Error:', error));
+
+    fetch('http://127.0.0.1:8000/manager/estadisticas')
+      .then(response => response.json())
+      .then(data => {
+        this.estadisticas = data;
+        console.log(this.estadisticas)
       })
       .catch(error => console.error('Error:', error));
   }

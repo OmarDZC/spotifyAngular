@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CancionComponent } from './cancion/cancion.component';
 import { BodyComponent } from './body/body.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BodyComponent } from './body/body.component';
     HeaderComponent,
     CancionComponent,
     BodyComponent,
+    EstadisticasComponent,
   ],
   imports: [
     BrowserModule,
